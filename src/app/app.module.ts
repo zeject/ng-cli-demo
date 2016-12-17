@@ -7,7 +7,9 @@ import { AppComponent } from './app.component';
 import { PageAComponent } from './page-a/page-a.component';
 import { PageBComponent } from './page-b/page-b.component';
 import { AppRoutingModule } from './app-routing.module';
-import { LoginModule } from './login/login.module';
+
+import { AuthService } from './child/auth.service';
+import { AuthGuard } from './child/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -19,10 +21,9 @@ import { LoginModule } from './login/login.module';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule,
-    LoginModule
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,7 +6,7 @@ import { AuthGuard } from '../child/auth-guard.service';
 
 const appRoutes: Routes = [
     {
-        path: 'login',
+        path: '',
         component: LoginComponent
     }
 ];
@@ -17,7 +17,6 @@ const appRoutes: Routes = [
     ],
     exports: [
         RouterModule
-    ],
-    providers: [AuthGuard, AuthService]
+    ]
 })
 export class LoginRoutingModule { }
