@@ -18,6 +18,6 @@
         {{ formErrors.password }}
       </div>
     </div>
-    <button type="submit" class="btn btn-default" [disabled]="!issueForm.valid">Submit</button>
+    <button type="submit" class="btn btn-default" [disabled]="!issueForm.valid || submited">Submit</button>
   </form>
 </div>
