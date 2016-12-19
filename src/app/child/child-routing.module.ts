@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageCComponent } from './page-c/page-c.component';
-import { AuthGuard } from './auth-guard.service';
+import { AuthGuard } from '../service/authService/auth-guard.service';
 
 
 const appRoutes: Routes = [

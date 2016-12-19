@@ -8,8 +8,8 @@ import { PageAComponent } from './page-a/page-a.component';
 import { PageBComponent } from './page-b/page-b.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { AuthService } from './child/auth.service';
-import { AuthGuard } from './child/auth-guard.service';
+import { AuthGuard } from './service/authService/auth-guard.service';
+import { AuthService } from './service/authService/auth.service';
 
 @NgModule({
   declarations: [
