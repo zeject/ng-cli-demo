@@ -14,6 +14,7 @@ const adminRouter: Routes = [
                 path: '',
                 canActivateChild: [AuthGuard],
                 children: [
+                    { path: '', redirectTo: 'index', pathMatch: 'full' },
                     { path: 'index', component: IndexComponent }
                 ]
             }
