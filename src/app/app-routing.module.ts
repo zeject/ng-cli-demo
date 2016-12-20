@@ -4,10 +4,10 @@ import { RouterModule, Routes } from '@angular/router';
 const appRoutes: Routes = [
     {
         path: '',
-        redirectTo: '/admin',
+        redirectTo: '/qadmin',
         pathMatch: 'full'
     },
-    { path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule' },
+    { path: 'qadmin', loadChildren: 'app/admin/admin.module#AdminModule' },
     { path: 'login', loadChildren: 'app/login/login.module#LoginModule' }
 ];
 

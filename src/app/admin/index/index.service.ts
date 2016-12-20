@@ -9,6 +9,7 @@ export class IndexService {
     constructor(private http: Http) { }
 
     search() {
-        return this.http.get('/api/data.json').map((res: Response) => res.json());
+        let url = `/admin/getmysell?pageNumber=3`;
+        return this.http.get(url).map((res: Response) => res.json());
     }
 }

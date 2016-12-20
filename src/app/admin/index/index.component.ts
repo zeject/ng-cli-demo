@@ -8,10 +8,15 @@ import { IndexService } from './index.service';
 })
 export class IndexComponent implements OnInit {
 
+  buylist: any[];
+
   constructor(private indexService: IndexService) { }
 
   ngOnInit() {
-    this.indexService.search().subscribe(data => console.log(data));
+    this.indexService.search().subscribe(data => {
+      console.log(data);
+      this.buylist = data.p.data;
+    });
     console.log();
   }
 

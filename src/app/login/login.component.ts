@@ -7,7 +7,7 @@ import { AuthService } from '../service/authService/auth.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit {
   // 提交按钮状态
@@ -52,15 +52,16 @@ export class LoginComponent implements OnInit {
 
   onSubmit(value) {
     this.submited = true;
-    console.log('form', value);
-    this.authService.login().subscribe(() => {
+    this.authService.login(value.username, value.password).subscribe(() => {
       if (this.authService.isLoggedIn) {
         // Get the redirect URL from our auth service
         // If no redirect has been set, use the default
-        let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/admin';
+        let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/qadmin';
         // Redirect the user
-        console.log(redirect);
+        console.log(this.authService.userInfo);
         this.router.navigate([redirect]);
+      } else {
+        this.submited = false;
       }
     });
   }

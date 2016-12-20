@@ -2,5 +2,17 @@
   "/api": {
     "target": "http://127.0.0.1",
     "secure": false
+  },
+  "/admin": {
+    "target": "http://127.0.0.1",
+    "secure": false
+  },
+  "/oologin": {
+    "target": "http://127.0.0.1",
+    "secure": false
+  },
+  "/ooexit": {
+    "target": "http://127.0.0.1",
+    "secure": false
   }
 }
