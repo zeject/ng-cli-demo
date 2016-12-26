@@ -1,0 +1,27 @@
+<div style="height: 30px;">
+  <div class="col-md-offset-4 col-md-4">
+    <button type="button" (click)="add(imgBuyer?.id,imgBuyer?.userid,imgBuyer?.phone)" class="btn btn-primary btn-block">产品信息</button>
+  </div>
+</div>
+<dl class="dl-horizontal" style="margin-top: 20px;">
+  <dt>姓名</dt>
+  <dd>{{imgBuyer?.username}}</dd>
+  <dt>公司名</dt>
+  <dd>{{imgBuyer?.company}}</dd>
+  <dt>电话</dt>
+  <dd>{{imgBuyer?.phone}}</dd>
+  <dt>向他询价</dt>
+  <dd>{{imgBuyer?.seller}}</dd>
+  <dt>日期</dt>
+  <dd>{{imgBuyer?.cdate}}</dd>
+  <dt>图片</dt>
+  <dd *ngFor="let img of imgBuyer?.imgs | split">
+    <a href="http://webimg.mp12345.com/{{img}}" target="_blank"><img src="http://webimg.mp12345.com/{{img}}!big" /></a>
+  </dd>
+  <dt>操作</dt>
+  <dd>
+    <button class="btn" routerLink="/qadmin/index">返回</button> &emsp;
+    <button class="btn" *ngIf="!imgBuyer?.flag" (click)="updateImgBuyer()">已处理</button>
+    <span *ngIf="imgBuyer?.flag">已处理</span>
+  </dd>
+</dl>
