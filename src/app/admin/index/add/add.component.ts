@@ -15,9 +15,9 @@ export class AddComponent implements OnInit {
     private service: IndexService) { }
 
   ngOnInit() {
-    let id = +this.route.snapshot.params['id'];
-    let userid = +this.route.snapshot.params['userid'];
-    let phone = +this.route.snapshot.params['phone'];
+    let id = this.route.snapshot.params['id'];
+    let userid = this.route.snapshot.params['userid'];
+    let phone = this.route.snapshot.params['phone'];
     console.log(id, userid, phone);
   }
 
