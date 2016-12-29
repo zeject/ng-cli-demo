@@ -1,3 +1,85 @@
 <p>
   add works!
 </p>
+{{buyerData | json}}
+<form class="form-horizontal showcase-form" role="form" #buyerDataForm="ngForm" novalidate="">
+  <div class="panel panel-default" *ngFor="let tr of buyerData.data; let i=index">
+    <div class="panel-heading">Production</div>
+    <div class="row">
+      <div class="col-sm-3">
+        <input type="text" name="cp_name{{i}}" [(ngModel)]="tr.cp_name" class="form-control" maxlength="300" required placeholder="产品名称">
+      </div>
+      <div class="col-sm-3">
+        <input type="text" name="cp_guige{{i}}" [(ngModel)]="tr.cp_guige" class="form-control" maxlength="300" placeholder="产品规格">
+      </div>
+      <div class="col-sm-2">
+        <input type="text" name="cp_pinpai{{i}}" [(ngModel)]="tr.cp_pinpai" class="form-control" maxlength="100" placeholder="产品品牌">
+      </div>
+      <div class="col-sm-2">
+        <input type="text" name="cp_buycount{{i}}" [(ngModel)]="tr.cp_buycount" class="form-control" maxlength="8" required placeholder="购买数量">
+      </div>
+      <div class="col-sm-2">
+        <input type="text" name="cp_danwei{{i}}" [(ngModel)]="tr.cp_danwei" class="form-control" maxlength="6" required placeholder="产品单位">
+      </div>
+      <div class="col-sm-2">
+        <input type="text" name="freight{{i}}" [(ngModel)]="tr.freight" class="form-control" maxlength="11" required placeholder="运费">
+      </div>
+      <div class="col-sm-1">
+        <div class="checkbox">
+          <label> <input type="checkbox" name="tax{{i}}" [(ngModel)]="tr.tax">
+						含税
+					</label>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <p class="input-group">
+          <input type="text" class="form-control" uib-datepicker-popup="yyyy-MM-dd" name="edate{{i}}" [(ngModel)]="tr.edate" datepicker-options="dateOptions"
+            is-open="opened" close-text="Close" placeholder="yyyy-MM-dd" /> <span class="input-group-btn">
+						<button type="button" class="btn btn-default"
+							ng-click="opened=true">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+					</span>
+        </p>
+      </div>
+      <div class="col-sm-5">
+        <textarea class="form-control" name="note{{i}}" [(ngModel)]="tr.note" rows="1" placeholder="产品的备注"></textarea>
+      </div>
+      <div class="col-sm-2">
+        <label><a (click)="addGYS(tr.gys)">增加供应商</a> | <a
+					(click)="del(buyerData.data, i)">删除</a></label>
+      </div>
+    </div>
+    <hr>
+    <h4>供应商信息</h4>
+    <div class="row" *ngFor="let gys of tr.gys; let j=index">
+      <div class="col-sm-2">
+        <input type="text" name="gys_shouji{{j}}" [(ngModel)]="gys.gys_shouji" class="form-control" maxlength="11" required placeholder="供应商手机">
+      </div>
+      <div class="col-sm-2">
+        <input type="text" name="gys_xingming{{j}}" [(ngModel)]="gys.gys_xingming" class="form-control" maxlength="30" required placeholder="供应商姓名">
+      </div>
+      <div class="col-sm-2">
+        <input type="text" name="gys_gongsi{{j}}" [(ngModel)]="gys.gys_gongsi" class="form-control" maxlength="100" required placeholder="供应商公司">
+      </div>
+      <div class="col-sm-2">
+        <input type="text" name="gys_userid{{j}}" [(ngModel)]="gys.gys_userid" class="form-control" maxlength="11" placeholder="供应商用户id">
+      </div>
+      <div class="col-sm-2">
+        <input type="text" name="gys_baojia{{j}}" [(ngModel)]="gys.gys_baojia" class="form-control" maxlength="11" placeholder="供应商报价">
+      </div>
+      <div class="col-sm-2">
+        <a (click)="del(tr.gys, j)">删除</a>
+      </div>
+      <div class="col-sm-12">
+        <textarea class="form-control" name="gys_note{{j}}" [(ngModel)]="gys.note" rows="1" placeholder="供应商的备注"></textarea>
+      </div>
+    </div>
+  </div>
+</form>
+<button type="button" class="btn btn-primary" (click)="addPro()">添加新产品</button>
+<div class="text-center" style="margin-top: 100px;">
+  <button class="btn" routerLink="/qadmin/detail/{{id}}">返回</button> &emsp;&emsp;&emsp;
+  <button [disabled]="!buyerDataForm.valid" type="button" class="btn btn-primary" (click)="submit()">{{tag?'修改':'保存'}}</button>  &emsp;&emsp;&emsp;
+  <button title="发送App消息推送,告知用户" [disabled]="!buyerDataForm.valid" type="button" class="btn btn-primary" (click)="submit(1)">{{tag?'修改':'保存'}}并下发通知</button>
+</div>
