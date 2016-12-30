@@ -8,6 +8,7 @@ import { IndexService } from './index/index.service';
 import { HttpModule } from '@angular/http';
 
 import { PaginationModule } from 'ng2-bootstrap';
+
 import { DetailComponent } from './index/detail/detail.component';
 import { SplitPipe } from './split.pipe';
 import { AddComponent } from './index/add/add.component';
